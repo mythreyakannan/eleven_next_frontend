@@ -16,7 +16,7 @@ function Inventory() {
   const router = useRouter();
   const [Productdata, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const baseURL = "http://54.219.3.107/api/"
+  const baseURL = "https://eleven.ikadai.co/api/"
 
   useEffect(() => {
     setLoading(true);
