@@ -189,7 +189,8 @@ function ManageInventory() {
     onOpen()
   }
 
-  const submitProductModal = () => {
+  const submitProductModal = async (e = new SyntheticEvent()) => {
+    e.preventDefault();
     if(ModalState == 'add'){
       addProduct()
     }
@@ -304,7 +305,7 @@ function ManageInventory() {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth="1px">{ModalTitle}</DrawerHeader>
-
+            <form onSubmit={submitProductModal}>
             <DrawerBody>
               <Stack spacing="24px">
                 <Box>
@@ -360,10 +361,11 @@ function ManageInventory() {
               <Button variant="outline" mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme="blue" onClick={submitProductModal}>
+              <Button colorScheme="blue" type="submit">
                 Submit
               </Button>
             </DrawerFooter>
+            </form>
           </DrawerContent>
         </Drawer>
 
@@ -398,20 +400,6 @@ function ManageInventory() {
   );
 }
 
-// ManageInventory.getInitialProps = async () => {
-//   if (typeof window !== 'undefined') {
-//     const JWT = localStorage.getItem('jwt')
 
-//   const Response =  await fetch("http://localhost:8000/api/product", {
-//     headers: { "Content-Type": "application/json", "X-Auth-Token": localStorage.getItem('jwt'), },
-//   });
-//   const ProductData = await Response.json()
-//   console.log(ProductData)
-// }
-//   return {
-//     props: {productData: 'ProductData'}
-//   }
-
-// }
 
 export default ManageInventory;
