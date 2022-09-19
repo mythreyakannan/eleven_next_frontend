@@ -57,10 +57,11 @@ function ManageInventory() {
   const [ModalTitle, setModalTitle] = useState(null);
   const [ModalState, setModalState] = useState(null);
   const [isLoading, setLoading] = useState(false);
+  const baseURL = "http://54.219.3.107/api/"
 
   const fetchProducts = async () => {
 
-    await fetch("http://localhost:8000/api/product", {
+    await fetch(baseURL+"product", {
       headers: {
         "Content-Type": "application/json",
         "X-Auth-Token": localStorage.getItem("jwt"),
@@ -86,7 +87,7 @@ function ManageInventory() {
   };
 
   const deleteProduct = async () => {
-    await fetch("http://localhost:8000/api/product/"+selectedID, {
+    await fetch(baseURL+"product/"+selectedID, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +112,7 @@ function ManageInventory() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:8000/api/product", {
+    fetch(baseURL+"product", {
       headers: {
         "Content-Type": "application/json",
         "X-Auth-Token": localStorage.getItem("jwt"),
@@ -126,7 +127,7 @@ function ManageInventory() {
   }, []);
 
   const addProduct = async () => {
-    await fetch("http://localhost:8000/api/product", {
+    await fetch(baseURL+"product", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +153,7 @@ function ManageInventory() {
   };
 
   const updateProduct = async () => {
-    await fetch("http://localhost:8000/api/product/"+selectedID, {
+    await fetch(baseURL+"product/"+selectedID, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -346,6 +347,7 @@ function ManageInventory() {
                      type="url"
                      id="image"
                      value={image}
+                     required
                      placeholder="Please add image URL"
                      onChange={(e) => setImage(e.target.value)} >
                     </Input>
