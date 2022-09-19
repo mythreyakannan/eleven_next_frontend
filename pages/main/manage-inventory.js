@@ -57,7 +57,7 @@ function ManageInventory() {
   const [ModalTitle, setModalTitle] = useState(null);
   const [ModalState, setModalState] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const baseURL = "http://54.219.3.107/api/"
+  const baseURL = "https://eleven.ikadai.co/api/"
 
   const fetchProducts = async () => {
 
