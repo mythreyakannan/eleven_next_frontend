@@ -16,10 +16,11 @@ function Inventory() {
   const router = useRouter();
   const [Productdata, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
+  const baseURL = "http://54.219.3.107/api/"
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:8000/api/product", {
+    fetch(baseURL+"product", {
       headers: {
         "Content-Type": "application/json",
         "X-Auth-Token": localStorage.getItem("jwt"),
