@@ -11,11 +11,12 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cnfpassword, setCnfPassword] = useState("");
+  const baseURL = "http://54.219.3.107/api/"
 
   const submit = async (e = new SyntheticEvent()) => {
     e.preventDefault();
       if (cnfpassword == password) {
-        await fetch("http://localhost:8000/api/register", {
+        await fetch(baseURL+"register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
