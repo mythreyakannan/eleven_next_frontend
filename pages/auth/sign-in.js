@@ -9,10 +9,11 @@ function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast()
+  const baseURL = "http://54.219.3.107/api/"
 
   const submit = async (e = new SyntheticEvent()) => { 
     e.preventDefault();
-    const Response =  await fetch("http://localhost:8000/api/login", {
+    const Response =  await fetch(baseURL+"login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
